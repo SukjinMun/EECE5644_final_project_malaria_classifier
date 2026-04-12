@@ -1,4 +1,4 @@
-"""Feature category ablation, per-feature importance, logistic regression coefficients."""
+# Feature category ablation, per-feature importance, logistic regression coefficients.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -19,7 +19,6 @@ from src.config import (
     FEATURES_DIR, MODELS_DIR, OUTPUTS_DIR,
     COLOR_FEATURE_NAMES, TEXTURE_FEATURE_NAMES, ALL_FEATURE_NAMES,
 )
-
 
 def main():
     data = np.load(FEATURES_DIR / 'features_scaled.npz')
@@ -162,7 +161,6 @@ def main():
         plt.savefig(OUTPUTS_DIR / 'logreg_coefficients.png', dpi=120, bbox_inches='tight')
         plt.close(fig)
         coef_df.to_csv(OUTPUTS_DIR / 'logreg_coefficients.csv', index=False)
-
 
 if __name__ == '__main__':
     main()

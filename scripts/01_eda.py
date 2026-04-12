@@ -1,4 +1,4 @@
-"""Exploratory data analysis: file counts, sample image grid, image size histograms."""
+# Exploratory data analysis: file counts, sample image grid, image size histograms.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -15,10 +15,8 @@ from src.config import (
     RANDOM_STATE,
 )
 
-
 def list_images(folder):
     return sorted([f for f in os.listdir(folder) if f.lower().endswith('.png')])
-
 
 def main():
     parasitized_files = list_images(PARASITIZED_DIR)
@@ -83,7 +81,6 @@ def main():
     plt.close(fig)
 
     print('saved eda_samples.png and eda_sizes.png')
-
 
 if __name__ == '__main__':
     main()

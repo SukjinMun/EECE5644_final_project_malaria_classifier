@@ -1,10 +1,9 @@
-"""Small CNN architecture for the deep-learning baseline.
-
-Three convolutional blocks (3 -> 16 -> 32 -> 64 channels, each with a 3x3
-kernel, ReLU activation, and 2x2 max pooling), followed by a flatten layer,
-a 64-unit fully connected layer with dropout, and a 2-unit output layer.
-About 1M trainable parameters for the default IMG_SIZE = 128.
-"""
+# Small CNN architecture for the deep-learning baseline.
+#
+# Three convolutional blocks (3 -> 16 -> 32 -> 64 channels, each with a 3x3
+# kernel, ReLU activation, and 2x2 max pooling), followed by a flatten layer,
+# a 64-unit fully connected layer with dropout, and a 2-unit output layer.
+# About 1M trainable parameters for the default IMG_SIZE = 128.
 import numpy as np
 import torch
 import torch.nn as nn
@@ -15,9 +14,8 @@ from skimage.transform import resize as sk_resize
 
 from .config import IMG_SIZE, CNN_DROPOUT
 
-
 class CellImageDataset(Dataset):
-    """Loads cell images on demand and converts them to CHW float tensors in [0, 1]."""
+    # Loads cell images on demand and converts them to CHW float tensors in [0, 1].
 
     def __init__(self, paths, labels, img_size=IMG_SIZE):
         self.paths = paths
@@ -44,9 +42,8 @@ class CellImageDataset(Dataset):
         y = int(self.labels[idx])
         return x, y
 
-
 class SmallCNN(nn.Module):
-    """Three conv blocks plus a small fully connected head."""
+    # Three conv blocks plus a small fully connected head.
 
     def __init__(self, num_classes=2, img_size=IMG_SIZE, dropout=CNN_DROPOUT):
         super().__init__()

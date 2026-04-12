@@ -1,14 +1,12 @@
-"""Central configuration: paths, hyperparameters, random state.
-
-All paths are relative to this file so the project is portable. Override the
-data location by setting the MALARIA_DATA_DIR environment variable to the
-folder that contains the Parasitized/ and Uninfected/ subdirectories.
-"""
+# Central configuration: paths, hyperparameters, random state.
+#
+# All paths are relative to this file so the project is portable. Override the
+# data location by setting the MALARIA_DATA_DIR environment variable to the
+# folder that contains the Parasitized/ and Uninfected/ subdirectories.
 import os
 from pathlib import Path
 
 import numpy as np
-
 
 PROJECT_ROOT = Path(__file__).parent.parent.resolve()
 

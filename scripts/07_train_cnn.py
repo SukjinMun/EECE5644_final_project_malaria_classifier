@@ -1,4 +1,4 @@
-"""Train the small CNN deep-learning baseline on raw cell images."""
+# Train the small CNN deep-learning baseline on raw cell images.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -22,7 +22,6 @@ from src.config import (
     CNN_EPOCHS, CNN_LR, CNN_BATCH_SIZE,
 )
 from src.cnn_model import CellImageDataset, SmallCNN
-
 
 def main():
     split = np.load(FEATURES_DIR / 'split.npz', allow_pickle=True)
@@ -132,7 +131,6 @@ def main():
     fig.tight_layout()
     plt.savefig(OUTPUTS_DIR / 'cnn_training_curve.png', dpi=120, bbox_inches='tight')
     plt.close(fig)
-
 
 if __name__ == '__main__':
     main()

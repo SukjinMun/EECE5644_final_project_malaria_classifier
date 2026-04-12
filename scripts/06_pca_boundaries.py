@@ -1,4 +1,4 @@
-"""PCA visualization in 2D + decision boundary plots for every classical model."""
+# PCA visualization in 2D + decision boundary plots for every classical model.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -16,7 +16,6 @@ from sklearn.naive_bayes import GaussianNB
 from xgboost import XGBClassifier
 
 from src.config import FEATURES_DIR, OUTPUTS_DIR, RANDOM_STATE
-
 
 def main():
     data = np.load(FEATURES_DIR / 'features_scaled.npz')
@@ -98,7 +97,6 @@ def main():
     plt.tight_layout(rect=[0, 0, 1, 0.96])
     plt.savefig(OUTPUTS_DIR / 'decision_boundaries.png', dpi=120, bbox_inches='tight')
     plt.close(fig)
-
 
 if __name__ == '__main__':
     main()

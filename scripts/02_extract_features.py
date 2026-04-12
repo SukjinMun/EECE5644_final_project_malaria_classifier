@@ -1,4 +1,4 @@
-"""Build the file index, perform the stratified train/test split, extract features."""
+# Build the file index, perform the stratified train/test split, extract features.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -20,10 +20,8 @@ from src.config import (
 )
 from src.feature_extraction import extract_features_for_paths
 
-
 def list_images(folder):
     return sorted([f for f in os.listdir(folder) if f.lower().endswith('.png')])
-
 
 def build_paths():
     parasitized_files = list_images(PARASITIZED_DIR)
@@ -37,7 +35,6 @@ def build_paths():
         paths.append(os.path.join(UNINFECTED_DIR, f))
         labels.append(0)
     return np.array(paths), np.array(labels)
-
 
 def main():
     all_paths, all_labels = build_paths()
@@ -98,7 +95,6 @@ def main():
         y_train=y_train, y_test=y_test,
     )
     print(f'saved scaled features to {FEATURES_DIR / "features_scaled.npz"}')
-
 
 if __name__ == '__main__':
     main()

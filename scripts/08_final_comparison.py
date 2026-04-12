@@ -1,4 +1,4 @@
-"""Assemble the final comparison table and the literature comparison vs Molina et al. (2020)."""
+# Assemble the final comparison table and the literature comparison vs Molina et al. (2020).
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -8,9 +8,7 @@ import matplotlib.pyplot as plt
 
 from src.config import OUTPUTS_DIR, ALL_FEATURE_NAMES
 
-
 MOLINA_ACCURACY = 0.9770  # Molina et al. (2020) cell-level accuracy
-
 
 def main():
     # Load all the per-source metric tables
@@ -88,7 +86,6 @@ def main():
     gap_cnn = MOLINA_ACCURACY - float(cnn_row['accuracy'])
     print(f'gap vs Molina (tuned classical): {gap_classical * 100:+.2f} percentage points')
     print(f'gap vs Molina (small CNN):       {gap_cnn * 100:+.2f} percentage points')
-
 
 if __name__ == '__main__':
     main()

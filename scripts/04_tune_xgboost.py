@@ -1,9 +1,8 @@
-"""Hyperparameter tuning for the best classical model via GridSearchCV.
-
-Uses a sklearn Pipeline so each cross-validation fold refits its own scaler,
-avoiding the train-validation leakage that occurs if a globally fitted
-scaler is reused inside the search loop.
-"""
+# Hyperparameter tuning for the best classical model via GridSearchCV.
+#
+# Uses a sklearn Pipeline so each cross-validation fold refits its own scaler,
+# avoiding the train-validation leakage that occurs if a globally fitted
+# scaler is reused inside the search loop.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -28,7 +27,6 @@ from sklearn.metrics import (
 )
 
 from src.config import FEATURES_DIR, MODELS_DIR, OUTPUTS_DIR, RANDOM_STATE
-
 
 GRID_BY_TARGET = {
     'XGBoost': (
@@ -64,7 +62,6 @@ GRID_BY_TARGET = {
         {'max_depth': [None, 5, 10, 20], 'min_samples_leaf': [1, 5, 10]},
     ),
 }
-
 
 def main():
     data = np.load(FEATURES_DIR / 'features_scaled.npz')
@@ -126,7 +123,6 @@ def main():
     safe_name = best_name.replace(' ', '_')
     joblib.dump(tuned_model, MODELS_DIR / f'model_{safe_name}_tuned.joblib')
     print(f'saved tuned model to {MODELS_DIR / f"model_{safe_name}_tuned.joblib"}')
-
 
 if __name__ == '__main__':
     main()

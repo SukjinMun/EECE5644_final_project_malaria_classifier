@@ -1,4 +1,4 @@
-"""Train seven classical classifiers + a Dummy baseline. Save metrics + ROC/PR + confusion."""
+# Train seven classical classifiers + a Dummy baseline. Save metrics + ROC/PR + confusion.
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -26,7 +26,6 @@ from sklearn.metrics import (
 
 from src.config import FEATURES_DIR, MODELS_DIR, OUTPUTS_DIR, RANDOM_STATE
 
-
 def evaluate_model(model, name, X_tr, y_tr, X_te, y_te):
     t0 = time.time()
     model.fit(X_tr, y_tr)
@@ -48,7 +47,6 @@ def evaluate_model(model, name, X_tr, y_tr, X_te, y_te):
         'fit_time_s': fit_time,
     }
     return model, metrics, y_pred, y_score
-
 
 def main():
     data = np.load(FEATURES_DIR / 'features_scaled.npz')
@@ -149,7 +147,6 @@ def main():
 
     # Persist best model name for downstream scripts
     np.savez(OUTPUTS_DIR / 'best_classical_name.npz', name=np.array([best_name]))
-
 
 if __name__ == '__main__':
     main()

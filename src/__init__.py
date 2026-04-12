@@ -1,1 +1,1 @@
-"""Malaria cell image classification - reusable source modules."""
+# Malaria cell image classification - reusable source modules.
