@@ -19,7 +19,7 @@ def main():
     cnn_row = cnn_df.iloc[0].to_dict()
 
     final_rows = []
-    cols = ['accuracy', 'precision', 'recall', 'f1', 'auc']
+    cols = ['accuracy', 'precision', 'recall', 'f1', 'auc', 'fit_time_s']
     for _, r in classical_df.iterrows():
         final_rows.append({c: r[c] for c in ['model'] + cols})
     final_rows.append({c: tuned_row[c] for c in ['model'] + cols})
